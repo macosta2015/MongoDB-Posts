@@ -17,7 +17,11 @@ router.post('/', async (req, res) => {
     const user = new User({
         name: req.body.name,
         email: req.body.email,
-        age: req.body.age
+        dni: req.body.dni,
+        telefono: req.body.telefono,
+        descripcion: req.body.descripcion,
+        ciudad: req.body.ciudad,
+        modalidad: req.body.modalidad
     });
 
     try {
