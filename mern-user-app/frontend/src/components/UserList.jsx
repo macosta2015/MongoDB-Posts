@@ -24,70 +24,74 @@ function UserList({ users, onUserDeleted }) {
 
     const getModalidadColor = (modalidad) => {
         switch (modalidad) {
-            case 'Online': return '#4CAF50';
-            case 'Presencial': return '#2196F3';
-            case 'Híbrido': return '#FF9800';
+            case 'Online': return '#34A853';
+            case 'Presencial': return '#1a73e8';
+            case 'Híbrido': return '#12c2e9';
             default: return '#9E9E9E';
         }
     };
 
     return (
-        <div style={{ width: '100%' }}>
+        <div style={{ width: '100%', padding: '0 8px' }}>
             {users.length === 0 ? (
                 <p style={{
                     textAlign: 'center',
-                    color: '#666',
-                    padding: '60px 20px',
+                    color: '#5f6368',
+                    padding: 'clamp(40px, 8vw, 60px) 20px',
                     background: 'white',
-                    borderRadius: '16px',
-                    fontSize: 'clamp(16px, 2vw, 18px)',
+                    borderRadius: '12px',
+                    fontSize: 'clamp(14px, 3vw, 18px)',
                     maxWidth: '600px',
-                    margin: '0 auto'
+                    margin: '0 auto',
+                    boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
                 }}>
                     No hay usuarios registrados. ¡Agrega tu primer usuario!
                 </p>
             ) : (
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 320px), 1fr))',
-                    gap: 'clamp(16px, 2vw, 24px)',
-                    width: '100%'
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 400px))',
+                    gap: 'clamp(12px, 3vw, 20px)',
+                    width: '100%',
+                    justifyContent: 'center',
+                    padding: '0'
                 }}>
                     {users.map((user, index) => (
                         <div key={user._id} style={{
-                            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                            borderRadius: '16px',
-                            padding: 'clamp(20px, 3vw, 28px)',
-                            boxShadow: '0 10px 30px rgba(0,0,0,0.15)',
+                            background: 'linear-gradient(135deg, #1a73e8 0%, #12c2e9 100%)',
+                            borderRadius: '12px',
+                            padding: '20px',
+                            boxShadow: '0 2px 8px rgba(26, 115, 232, 0.2)',
                             position: 'relative',
                             transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                             cursor: 'pointer',
-                            minHeight: '400px',
                             display: 'flex',
-                            flexDirection: 'column'
+                            flexDirection: 'column',
+                            width: '100%',
+                            boxSizing: 'border-box'
                         }}
                             onMouseEnter={(e) => {
-                                e.currentTarget.style.transform = 'translateY(-8px)';
-                                e.currentTarget.style.boxShadow = '0 15px 40px rgba(0,0,0,0.25)';
+                                e.currentTarget.style.transform = 'translateY(-4px)';
+                                e.currentTarget.style.boxShadow = '0 8px 16px rgba(26, 115, 232, 0.3)';
                             }}
                             onMouseLeave={(e) => {
                                 e.currentTarget.style.transform = 'translateY(0)';
-                                e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.15)';
+                                e.currentTarget.style.boxShadow = '0 2px 8px rgba(26, 115, 232, 0.2)';
                             }}
                         >
                             {/* Número de tarjeta */}
                             <div style={{
                                 position: 'absolute',
-                                top: '16px',
-                                left: '16px',
-                                width: 'clamp(35px, 5vw, 45px)',
-                                height: 'clamp(35px, 5vw, 45px)',
+                                top: '12px',
+                                left: '12px',
+                                width: '36px',
+                                height: '36px',
                                 borderRadius: '50%',
-                                background: 'rgba(255,255,255,0.3)',
+                                background: 'rgba(255,255,255,0.25)',
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
-                                fontSize: 'clamp(16px, 2vw, 20px)',
+                                fontSize: '16px',
                                 fontWeight: 'bold',
                                 color: 'white'
                             }}>
@@ -97,32 +101,32 @@ function UserList({ users, onUserDeleted }) {
                             {/* Badge Verificado */}
                             <div style={{
                                 position: 'absolute',
-                                top: '16px',
-                                right: '16px',
-                                background: '#ffd700',
-                                padding: '4px 12px',
+                                top: '12px',
+                                right: '12px',
+                                background: '#34A853',
+                                padding: '4px 10px',
                                 borderRadius: '12px',
-                                fontSize: 'clamp(10px, 1.5vw, 12px)',
-                                fontWeight: 'bold',
-                                color: '#333'
+                                fontSize: '11px',
+                                fontWeight: '600',
+                                color: 'white'
                             }}>
                                 ✓ Verificado
                             </div>
 
                             {/* Foto de perfil (inicial) */}
                             <div style={{
-                                width: 'clamp(80px, 15vw, 120px)',
-                                height: 'clamp(80px, 15vw, 120px)',
+                                width: '100px',
+                                height: '100px',
                                 borderRadius: '50%',
                                 background: 'white',
-                                margin: '40px auto 16px',
+                                margin: '35px auto 16px',
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
-                                fontSize: 'clamp(32px, 6vw, 52px)',
+                                fontSize: '44px',
                                 fontWeight: 'bold',
-                                color: '#667eea',
-                                border: '4px solid rgba(255,255,255,0.5)',
+                                color: '#1a73e8',
+                                border: '4px solid rgba(255,255,255,0.4)',
                                 flexShrink: 0
                             }}>
                                 {user.name.charAt(0).toUpperCase()}
@@ -135,112 +139,107 @@ function UserList({ users, onUserDeleted }) {
                                 flex: 1,
                                 display: 'flex',
                                 flexDirection: 'column',
-                                justifyContent: 'space-between'
+                                gap: '8px'
                             }}>
-                                <div>
-                                    <h3 style={{
-                                        margin: '0 0 8px 0',
-                                        fontSize: 'clamp(20px, 3vw, 26px)',
-                                        fontWeight: 'bold',
-                                        wordBreak: 'break-word'
-                                    }}>
-                                        {user.name}
-                                    </h3>
+                                <h3 style={{
+                                    margin: '0',
+                                    fontSize: 'clamp(18px, 4vw, 22px)',
+                                    fontWeight: 'bold',
+                                    wordBreak: 'break-word',
+                                    lineHeight: '1.2'
+                                }}>
+                                    {user.name}
+                                </h3>
 
-                                    <p style={{
-                                        margin: '0 0 6px 0',
-                                        opacity: '0.95',
-                                        fontSize: 'clamp(12px, 1.8vw, 14px)',
-                                        wordBreak: 'break-word'
-                                    }}>
+                                <div style={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    gap: '4px',
+                                    fontSize: 'clamp(11px, 2.5vw, 13px)',
+                                    opacity: '0.95'
+                                }}>
+                                    <p style={{ margin: '0', wordBreak: 'break-word' }}>
                                         📧 {user.email}
                                     </p>
 
-                                    <p style={{
-                                        margin: '0 0 6px 0',
-                                        opacity: '0.95',
-                                        fontSize: 'clamp(12px, 1.8vw, 14px)'
-                                    }}>
+                                    <p style={{ margin: '0' }}>
                                         💳 DNI: {user.dni}
                                     </p>
 
-                                    <p style={{
-                                        margin: '0 0 12px 0',
-                                        opacity: '0.95',
-                                        fontSize: 'clamp(12px, 1.8vw, 14px)'
-                                    }}>
+                                    <p style={{ margin: '0' }}>
                                         📱 {user.telefono}
                                     </p>
 
                                     <p style={{
-                                        margin: '0 0 12px 0',
-                                        opacity: '0.95',
-                                        fontSize: 'clamp(14px, 2vw, 16px)',
+                                        margin: '0',
+                                        fontSize: 'clamp(13px, 3vw, 15px)',
                                         fontWeight: '600'
                                     }}>
                                         📍 {user.ciudad}
                                     </p>
+                                </div>
 
-                                    {/* Descripción */}
-                                    <p style={{
-                                        margin: '12px 0',
-                                        opacity: '0.9',
-                                        fontSize: 'clamp(11px, 1.6vw, 13px)',
-                                        lineHeight: '1.5',
-                                        fontStyle: 'italic',
-                                        padding: '0 10px',
-                                        maxHeight: '60px',
-                                        overflow: 'hidden',
-                                        textOverflow: 'ellipsis',
-                                        display: '-webkit-box',
-                                        WebkitLineClamp: 3,
-                                        WebkitBoxOrient: 'vertical'
-                                    }}>
-                                        "{user.descripcion}"
-                                    </p>
+                                {/* Descripción */}
+                                <p style={{
+                                    margin: '8px 0',
+                                    opacity: '0.9',
+                                    fontSize: 'clamp(11px, 2.5vw, 12px)',
+                                    lineHeight: '1.4',
+                                    fontStyle: 'italic',
+                                    padding: '0 8px',
+                                    maxHeight: '50px',
+                                    overflow: 'hidden',
+                                    textOverflow: 'ellipsis',
+                                    display: '-webkit-box',
+                                    WebkitLineClamp: 3,
+                                    WebkitBoxOrient: 'vertical'
+                                }}>
+                                    "{user.descripcion}"
+                                </p>
 
-                                    {/* Badge de Modalidad */}
-                                    <div style={{
-                                        display: 'inline-block',
-                                        background: getModalidadColor(user.modalidad),
-                                        padding: '8px 16px',
-                                        borderRadius: '20px',
-                                        margin: '12px 0',
-                                        fontSize: 'clamp(12px, 1.8vw, 15px)',
-                                        fontWeight: 'bold'
-                                    }}>
-                                        {getModalidadIcon(user.modalidad)} {user.modalidad}
-                                    </div>
+                                {/* Badge de Modalidad */}
+                                <div style={{
+                                    display: 'inline-block',
+                                    background: getModalidadColor(user.modalidad),
+                                    padding: '6px 14px',
+                                    borderRadius: '16px',
+                                    margin: '8px auto',
+                                    fontSize: 'clamp(12px, 2.5vw, 14px)',
+                                    fontWeight: '600',
+                                    whiteSpace: 'nowrap'
+                                }}>
+                                    {getModalidadIcon(user.modalidad)} {user.modalidad}
+                                </div>
 
-                                    {/* Calificación */}
-                                    <div style={{ margin: '12px 0' }}>
-                                        <span style={{ color: '#ffd700', fontSize: 'clamp(16px, 2.5vw, 20px)' }}>★★★★★</span>
-                                        <span style={{ marginLeft: '8px', fontSize: 'clamp(12px, 1.8vw, 15px)', fontWeight: '600' }}>5/5</span>
-                                    </div>
+                                {/* Calificación */}
+                                <div style={{ margin: '8px 0' }}>
+                                    <span style={{ color: '#FFC107', fontSize: 'clamp(14px, 3vw, 18px)' }}>★★★★★</span>
+                                    <span style={{ marginLeft: '6px', fontSize: 'clamp(11px, 2.5vw, 13px)', fontWeight: '600' }}>5/5</span>
                                 </div>
 
                                 {/* Botón eliminar */}
                                 <button
                                     onClick={() => handleDelete(user._id)}
                                     style={{
-                                        marginTop: '16px',
-                                        padding: 'clamp(10px, 1.5vw, 12px) clamp(20px, 3vw, 28px)',
-                                        backgroundColor: 'rgba(220, 53, 69, 0.9)',
+                                        marginTop: '12px',
+                                        padding: '10px 20px',
+                                        backgroundColor: '#EA4335',
                                         color: 'white',
                                         border: 'none',
-                                        borderRadius: '10px',
+                                        borderRadius: '8px',
                                         cursor: 'pointer',
-                                        fontSize: 'clamp(12px, 1.8vw, 14px)',
-                                        fontWeight: 'bold',
+                                        fontSize: 'clamp(12px, 2.5vw, 14px)',
+                                        fontWeight: '600',
                                         transition: 'all 0.3s ease',
-                                        width: '100%'
+                                        width: '100%',
+                                        touchAction: 'manipulation'
                                     }}
                                     onMouseEnter={(e) => {
-                                        e.currentTarget.style.backgroundColor = '#dc3545';
-                                        e.currentTarget.style.transform = 'scale(1.05)';
+                                        e.currentTarget.style.backgroundColor = '#d33426';
+                                        e.currentTarget.style.transform = 'scale(1.02)';
                                     }}
                                     onMouseLeave={(e) => {
-                                        e.currentTarget.style.backgroundColor = 'rgba(220, 53, 69, 0.9)';
+                                        e.currentTarget.style.backgroundColor = '#EA4335';
                                         e.currentTarget.style.transform = 'scale(1)';
                                     }}
                                 >
@@ -256,3 +255,263 @@ function UserList({ users, onUserDeleted }) {
 }
 
 export default UserList;
+
+// import React from 'react';
+// import axios from 'axios';
+
+// function UserList({ users, onUserDeleted }) {
+//     const handleDelete = async (id) => {
+//         if (window.confirm('¿Estás seguro de que deseas eliminar este usuario?')) {
+//             try {
+//                 await axios.delete(`http://localhost:5001/api/users/${id}`);
+//                 onUserDeleted(id);
+//             } catch (error) {
+//                 alert('Error al eliminar usuario');
+//             }
+//         }
+//     };
+
+//     const getModalidadIcon = (modalidad) => {
+//         switch (modalidad) {
+//             case 'Online': return '🌐';
+//             case 'Presencial': return '🏢';
+//             case 'Híbrido': return '🔄';
+//             default: return '📍';
+//         }
+//     };
+
+//     const getModalidadColor = (modalidad) => {
+//         switch (modalidad) {
+//             case 'Online': return '#34A853';
+//             case 'Presencial': return '#1a73e8';
+//             case 'Híbrido': return '#12c2e9';
+//             default: return '#9E9E9E';
+//         }
+//     };
+
+//     return (
+//         <div style={{ width: '100%' }}>
+//             {users.length === 0 ? (
+//                 <p style={{
+//                     textAlign: 'center',
+//                     color: '#5f6368',
+//                     padding: '60px 20px',
+//                     background: 'white',
+//                     borderRadius: '12px',
+//                     fontSize: 'clamp(16px, 2vw, 18px)',
+//                     maxWidth: '600px',
+//                     margin: '0 auto',
+//                     boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
+//                 }}>
+//                     No hay usuarios registrados. ¡Agrega tu primer usuario!
+//                 </p>
+//             ) : (
+//                 <div style={{
+//                     display: 'grid',
+//                     gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 320px), 1fr))',
+//                     gap: 'clamp(16px, 2vw, 24px)',
+//                     width: '100%'
+//                 }}>
+//                     {users.map((user, index) => (
+//                         <div key={user._id} style={{
+//                             background: 'linear-gradient(135deg, #1a73e8 0%, #12c2e9 100%)',
+//                             borderRadius: '12px',
+//                             padding: 'clamp(20px, 3vw, 28px)',
+//                             boxShadow: '0 2px 8px rgba(26, 115, 232, 0.2)',
+//                             position: 'relative',
+//                             transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+//                             cursor: 'pointer',
+//                             minHeight: '400px',
+//                             display: 'flex',
+//                             flexDirection: 'column'
+//                         }}
+//                             onMouseEnter={(e) => {
+//                                 e.currentTarget.style.transform = 'translateY(-4px)';
+//                                 e.currentTarget.style.boxShadow = '0 8px 16px rgba(26, 115, 232, 0.3)';
+//                             }}
+//                             onMouseLeave={(e) => {
+//                                 e.currentTarget.style.transform = 'translateY(0)';
+//                                 e.currentTarget.style.boxShadow = '0 2px 8px rgba(26, 115, 232, 0.2)';
+//                             }}
+//                         >
+//                             {/* Número de tarjeta */}
+//                             <div style={{
+//                                 position: 'absolute',
+//                                 top: '16px',
+//                                 left: '16px',
+//                                 width: 'clamp(35px, 5vw, 45px)',
+//                                 height: 'clamp(35px, 5vw, 45px)',
+//                                 borderRadius: '50%',
+//                                 background: 'rgba(255,255,255,0.25)',
+//                                 display: 'flex',
+//                                 alignItems: 'center',
+//                                 justifyContent: 'center',
+//                                 fontSize: 'clamp(16px, 2vw, 20px)',
+//                                 fontWeight: 'bold',
+//                                 color: 'white'
+//                             }}>
+//                                 {index + 1}
+//                             </div>
+
+//                             {/* Badge Verificado */}
+//                             <div style={{
+//                                 position: 'absolute',
+//                                 top: '16px',
+//                                 right: '16px',
+//                                 background: '#34A853',
+//                                 padding: '4px 12px',
+//                                 borderRadius: '12px',
+//                                 fontSize: 'clamp(10px, 1.5vw, 12px)',
+//                                 fontWeight: '600',
+//                                 color: 'white'
+//                             }}>
+//                                 ✓ Verificado
+//                             </div>
+
+//                             {/* Foto de perfil (inicial) */}
+//                             <div style={{
+//                                 width: 'clamp(80px, 15vw, 120px)',
+//                                 height: 'clamp(80px, 15vw, 120px)',
+//                                 borderRadius: '50%',
+//                                 background: 'white',
+//                                 margin: '40px auto 16px',
+//                                 display: 'flex',
+//                                 alignItems: 'center',
+//                                 justifyContent: 'center',
+//                                 fontSize: 'clamp(32px, 6vw, 52px)',
+//                                 fontWeight: 'bold',
+//                                 color: '#1a73e8',
+//                                 border: '4px solid rgba(255,255,255,0.4)',
+//                                 flexShrink: 0
+//                             }}>
+//                                 {user.name.charAt(0).toUpperCase()}
+//                             </div>
+
+//                             {/* Información del usuario */}
+//                             <div style={{
+//                                 textAlign: 'center',
+//                                 color: 'white',
+//                                 flex: 1,
+//                                 display: 'flex',
+//                                 flexDirection: 'column',
+//                                 justifyContent: 'space-between'
+//                             }}>
+//                                 <div>
+//                                     <h3 style={{
+//                                         margin: '0 0 8px 0',
+//                                         fontSize: 'clamp(20px, 3vw, 26px)',
+//                                         fontWeight: 'bold',
+//                                         wordBreak: 'break-word'
+//                                     }}>
+//                                         {user.name}
+//                                     </h3>
+
+//                                     <p style={{
+//                                         margin: '0 0 6px 0',
+//                                         opacity: '0.95',
+//                                         fontSize: 'clamp(12px, 1.8vw, 14px)',
+//                                         wordBreak: 'break-word'
+//                                     }}>
+//                                         📧 {user.email}
+//                                     </p>
+
+//                                     <p style={{
+//                                         margin: '0 0 6px 0',
+//                                         opacity: '0.95',
+//                                         fontSize: 'clamp(12px, 1.8vw, 14px)'
+//                                     }}>
+//                                         💳 DNI: {user.dni}
+//                                     </p>
+
+//                                     <p style={{
+//                                         margin: '0 0 12px 0',
+//                                         opacity: '0.95',
+//                                         fontSize: 'clamp(12px, 1.8vw, 14px)'
+//                                     }}>
+//                                         📱 {user.telefono}
+//                                     </p>
+
+//                                     <p style={{
+//                                         margin: '0 0 12px 0',
+//                                         opacity: '0.95',
+//                                         fontSize: 'clamp(14px, 2vw, 16px)',
+//                                         fontWeight: '600'
+//                                     }}>
+//                                         📍 {user.ciudad}
+//                                     </p>
+
+//                                     {/* Descripción */}
+//                                     <p style={{
+//                                         margin: '12px 0',
+//                                         opacity: '0.9',
+//                                         fontSize: 'clamp(11px, 1.6vw, 13px)',
+//                                         lineHeight: '1.5',
+//                                         fontStyle: 'italic',
+//                                         padding: '0 10px',
+//                                         maxHeight: '60px',
+//                                         overflow: 'hidden',
+//                                         textOverflow: 'ellipsis',
+//                                         display: '-webkit-box',
+//                                         WebkitLineClamp: 3,
+//                                         WebkitBoxOrient: 'vertical'
+//                                     }}>
+//                                         "{user.descripcion}"
+//                                     </p>
+
+//                                     {/* Badge de Modalidad */}
+//                                     <div style={{
+//                                         display: 'inline-block',
+//                                         background: getModalidadColor(user.modalidad),
+//                                         padding: '8px 16px',
+//                                         borderRadius: '20px',
+//                                         margin: '12px 0',
+//                                         fontSize: 'clamp(12px, 1.8vw, 15px)',
+//                                         fontWeight: '600'
+//                                     }}>
+//                                         {getModalidadIcon(user.modalidad)} {user.modalidad}
+//                                     </div>
+
+//                                     {/* Calificación */}
+//                                     <div style={{ margin: '12px 0' }}>
+//                                         <span style={{ color: '#FFC107', fontSize: 'clamp(16px, 2.5vw, 20px)' }}>★★★★★</span>
+//                                         <span style={{ marginLeft: '8px', fontSize: 'clamp(12px, 1.8vw, 15px)', fontWeight: '600' }}>5/5</span>
+//                                     </div>
+//                                 </div>
+
+//                                 {/* Botón eliminar */}
+//                                 <button
+//                                     onClick={() => handleDelete(user._id)}
+//                                     style={{
+//                                         marginTop: '16px',
+//                                         padding: 'clamp(10px, 1.5vw, 12px) clamp(20px, 3vw, 28px)',
+//                                         backgroundColor: '#EA4335',
+//                                         color: 'white',
+//                                         border: 'none',
+//                                         borderRadius: '8px',
+//                                         cursor: 'pointer',
+//                                         fontSize: 'clamp(12px, 1.8vw, 14px)',
+//                                         fontWeight: '600',
+//                                         transition: 'all 0.3s ease',
+//                                         width: '100%'
+//                                     }}
+//                                     onMouseEnter={(e) => {
+//                                         e.currentTarget.style.backgroundColor = '#d33426';
+//                                         e.currentTarget.style.transform = 'scale(1.02)';
+//                                     }}
+//                                     onMouseLeave={(e) => {
+//                                         e.currentTarget.style.backgroundColor = '#EA4335';
+//                                         e.currentTarget.style.transform = 'scale(1)';
+//                                     }}
+//                                 >
+//                                     🗑️ Eliminar Usuario
+//                                 </button>
+//                             </div>
+//                         </div>
+//                     ))}
+//                 </div>
+//             )}
+//         </div>
+//     );
+// }
+
+// export default UserList;

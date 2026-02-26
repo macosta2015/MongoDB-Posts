@@ -265,20 +265,21 @@ function UserForm({ onUserAdded }) {
                     style={{
                         marginTop: '20px',
                         padding: '14px 32px',
-                        backgroundColor: '#667eea',
+                        backgroundColor: '#1a73e8',  // ← Cambio aquí
                         color: 'white',
                         border: 'none',
                         borderRadius: '8px',
                         cursor: 'pointer',
                         fontSize: '16px',
-                        fontWeight: 'bold',
+                        fontWeight: '600',  // ← Cambio aquí
                         width: '100%',
-                        transition: 'all 0.3s ease'
+                        transition: 'all 0.3s ease',
+                        boxShadow: '0 2px 8px rgba(26, 115, 232, 0.3)'  // ← Añadir
                     }}
-                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#5568d3'}
-                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#667eea'}
+                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#1557b0'}  // ← Cambio aquí
+                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#1a73e8'}  // ← Cambio aquí
                 >
-                    ✅ Agregar Usuario
+                    ✅ Registrarme como psicólogo
                 </button>
             </form>
         </div>
